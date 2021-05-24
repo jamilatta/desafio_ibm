@@ -21,29 +21,15 @@
 
     <!-- Your stuff: Third-party CSS libraries go here -->
     <!-- This file stores project-specific CSS -->
+    <link href="{% static 'css/chosen.css' %}" rel="stylesheet">
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
     {% endblock %}
-    <!-- Le javascript
-    ================================================== -->
-    {# Placed at the top of the document so pages load faster with defer #}
-    {% block javascript %}
-      <!-- Bootstrap JS and its dependencies-->
-      <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-      <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-      <!-- Your stuff: Third-party javascript libraries go here -->
-
-      <!-- place project specific Javascript in this file -->
-      <script defer src="{% static 'js/project.js' %}"></script>
-
-    {% endblock javascript %}
 
   </head>
 
   <body>
 
-    <div class="mb-1">
+    <div class="mb-5">
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -53,7 +39,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Pets <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'search:search' %}">Pets <span class="sr-only">(current)</span></a>
             </li>
 <!--             <li class="nav-item">
               <a class="nav-link" href="{% url 'about' %}">Sobre</a>
@@ -61,11 +47,11 @@
             {% if request.user.is_authenticated %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "Meus Pets" %}</a>
+                <a class="nav-link" href="{% url 'pet:pet_list' %}">{% trans "Meus Pets" %}</a>
               </li>
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "Novo Pet" %}</a>
+                <a class="nav-link" href="{% url 'pet:pet_create' %}">{% trans "Novo Pet" %}</a>
               </li>
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
@@ -78,7 +64,7 @@
             {% else %}
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                <a id="sign-up-link" class="nav-link" href="{% url 'users:create' %}">{% trans "Sign Up" %}</a>
               </li>
               <li class="nav-item">
                 {# URL provided by django-allauth/account/urls.py #}
@@ -99,16 +85,47 @@
           {% endfor %}
       {% endif %}
 
+      <div class="text-right">
+        {% if request.user.is_authenticated %}
+          {{ request.user.name }}
+        {% endif %}
+        </div>
       {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
+
+        <div class="text-center">
+          Pet Finder encontre <a href="{% url 'search:search'%}">aqui</a> seu Pet para adoção!
+        </div>
       {% endblock content %}
 
     </div> <!-- /container -->
 
     {% block modal %}{% endblock modal %}
 
-    {% block inline_javascript %}
+
+    <!-- Le javascript
+    ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+      <!-- Bootstrap JS and its dependencies-->
+      <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <!-- Your stuff: Third-party javascript libraries go here -->
+
+      <script type="text/javascript" src="{% get_static_prefix %}js/jquery-3.6.0.min.js"></script>
+      <script type="text/javascript" src="{% get_static_prefix %}js/chosen.jquery.js"></script>
+
+
+      <!-- place project specific Javascript in this file -->
+      <script type="text/javascript" src="{% static 'js/JSONStorage.js' %}"></script>
+      <!-- place project specific Javascript in this file -->
+      <script src="{% static 'js/project.js' %}"></script>
+
+    {% endblock javascript %}
+
+    {% block extrajavascript %}
     {# Script tags with only code, no src (defer by default) #}
-    {% endblock inline_javascript %}
+    {% endblock extrajavascript %}
   </body>
 </html>

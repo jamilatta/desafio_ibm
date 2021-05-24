@@ -6,31 +6,62 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0003_auto_20210523_1447'),
+        ("users", "0003_auto_20210523_1447"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='City',
+            name="City",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, max_length=255, verbose_name='Nome da Cidade')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Nome da Cidade"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Cidade',
-                'verbose_name_plural': 'Cidades',
+                "verbose_name": "Cidade",
+                "verbose_name_plural": "Cidades",
             },
         ),
         migrations.CreateModel(
-            name='State',
+            name="State",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, max_length=255, verbose_name='Nome do Estado')),
-                ('acronym', models.CharField(blank=True, max_length=255, verbose_name='Acrônimo do Estado')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Nome do Estado"
+                    ),
+                ),
+                (
+                    "acronym",
+                    models.CharField(
+                        blank=True, max_length=255, verbose_name="Acrônimo do Estado"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Estado',
-                'verbose_name_plural': 'Estados',
+                "verbose_name": "Estado",
+                "verbose_name_plural": "Estados",
             },
         ),
     ]

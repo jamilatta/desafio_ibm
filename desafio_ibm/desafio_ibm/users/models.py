@@ -64,7 +64,11 @@ class User(AbstractUser):
     )
 
     state = models.ForeignKey(
-        State, verbose_name="Estado", on_delete=models.SET_NULL, blank=True, null=True,
+        State,
+        verbose_name="Estado",
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
     )
 
     def get_absolute_url(self):

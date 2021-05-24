@@ -7,18 +7,30 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0004_city_state'),
+        ("users", "0004_city_state"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='city',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='users.city', verbose_name='Cidade'),
+            model_name="user",
+            name="city",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="users.city",
+                verbose_name="Cidade",
+            ),
         ),
         migrations.AddField(
-            model_name='user',
-            name='state',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='users.state', verbose_name='Estado'),
+            model_name="user",
+            name="state",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="users.state",
+                verbose_name="Estado",
+            ),
         ),
     ]
