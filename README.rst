@@ -1,4 +1,4 @@
- desafio_ibm
+desafio_ibm
 ===========
 
 Desafio IBM
@@ -79,7 +79,7 @@ With MailHog running, to view messages that are sent by your application, open y
 
 To access the e-mail during development tests 
   
-  http://localhost:8025 (mailhog)
+http://localhost:8025 (mailhog)
 
 Deployment
 ----------
@@ -102,4 +102,7 @@ To run the aplication with docker
     docker-compose -f local.yml up -d
 
 
+Access with browser: 
+
+http://localhost:8000
 
