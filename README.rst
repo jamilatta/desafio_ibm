@@ -76,6 +76,11 @@ With MailHog running, to view messages that are sent by your application, open y
 
 .. _mailhog: https://github.com/mailhog/MailHog
 
+
+To access the e-mail during development tests 
+  
+http://localhost:8025 (mailhog)
+
 Deployment
 ----------
 
@@ -83,4 +88,21 @@ The following details how to deploy this application.
 
 Docker
 ^^^^^^
+
+To build the appplication:
+
+.. code-block:: bash
+
+    docker-compose -f local.yml build
+
+To run the aplication with docker
+
+.. code-block:: bash
+
+    docker-compose -f local.yml up -d
+
+
+Access with browser: 
+
+http://localhost:8000
 
