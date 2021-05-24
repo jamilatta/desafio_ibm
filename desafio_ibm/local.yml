@@ -14,6 +14,7 @@ services:
     depends_on:
       - postgres
       - mailhog
+      - solr
     volumes:
       - .:/app:z
     env_file:
@@ -22,6 +23,17 @@ services:
     ports:
       - "8000:8000"
     command: /start
+
+  solr:
+      image: solr:7.7.1
+      restart: always
+      ports:
+         - "8983:8983"
+      volumes:
+         - ./index/desafio_ibm:/opt/solr/server/solr/desafio_ibm
+      environment:
+          - SOLR_JAVA_MEM=-Xms512m -Xmx512m
+          - SOLR_HEAP=512m
 
   postgres:
     build:
@@ -52,6 +64,11 @@ services:
     ports:
       - "7000:7000"
     command: /start-docs
+
+  adminer:
+    image: adminer
+    ports:
+        - "8080:8080"
 
   mailhog:
     image: mailhog/mailhog:v1.0.0

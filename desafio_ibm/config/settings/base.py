@@ -59,7 +59,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize",  # Handy template tags
     "django.contrib.admin",
     "django.forms",
 ]
@@ -73,6 +73,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "desafio_ibm.users.apps.UsersConfig",
+    "search.apps.SearchConfig",
+    "haystack",
     "pet.apps.PetConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -291,3 +293,25 @@ SOCIALACCOUNT_ADAPTER = "desafio_ibm.users.adapters.SocialAccountAdapter"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+HAYSTACK_CONNECTIONS = {
+    "default": {
+        "ENGINE": "haystack.backends.solr_backend.SolrEngine",
+        "URL": env("SOLR_URL", default="http://solr:8983/solr/desafio_ibm/"),
+        "SILENTLY_FAIL": False,
+        "SOLR_TIMEOUT": 10,
+    }
+}
+
+HAYSTACK_SIGNAL_PROCESSOR = "haystack.signals.RealtimeSignalProcessor"
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SEARCH_PAGINATION_ITEMS_PER_PAGE = 10
+
+SEARCH_FACET_ITEMS_PER_MORE = 5
+
+SEARCH_FACET_LIST = [
+    "category",
+    "city",
+]
