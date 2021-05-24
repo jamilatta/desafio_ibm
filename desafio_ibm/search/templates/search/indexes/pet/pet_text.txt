@@ -1,0 +1,9 @@
+{{ object.name }}
+{{ object.cpf }}
+{{ object.nis }}
+{{ object.ocupation }}
+{{ object.sus }}
+{{ object.reg_number }}
+{{ object.cel }}
+{{ object.personal_cel }}
+{{ object.message_cel }}

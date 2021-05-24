@@ -1,0 +1,52 @@
+{% load translate %}
+{% load humanize %}
+{% load static %}
+{% load l10n %}
+
+<dl class="row result-doc">
+
+  {% if item.name %}
+    <dt class="col-sm-4">Nome do Pet:</dt>
+    <dd class="col-sm-8">{{ item.name }}</dd>
+   </dd>
+  {% endif %}
+
+  {% if item.race %}
+    <dt class="col-sm-4">Raça:</dt>
+    <dd class="col-sm-8">{{ item.race }}</dd>
+   </dd>
+  {% endif %}
+
+  {% if item.age %}
+    <dt class="col-sm-4">Idade:</dt>
+    <dd class="col-sm-8">{{ item.age }}</dd>
+  {% endif %}
+
+  {% if item.weight %}
+    <dt class="col-sm-4">Peso:</dt>
+    <dd class="col-sm-8">{{ item.weight }}</dd>
+  {% endif %}
+
+  {% if item.cel %}
+    <dt class="col-sm-4">Categoria:</dt>
+    <dd class="col-sm-8">{{ item.category }}</dd>
+  {% endif %}
+
+  {% if item.city %}
+    <dt class="col-sm-4">Cidade:</dt>
+    <dd class="col-sm-8">{{ item.city }}</dd>
+  {% endif %}
+
+  {% if item.adopt_email %}
+    <dt class="col-sm-4">E-mail para adoção:</dt>
+    <dd class="col-sm-8">{{ item.adopt_email }}</dd>
+  {% endif %}
+
+  {% if item.adopt_name %}
+    <dt class="col-sm-4">Nome do contato para adoção:</dt>
+    <dd class="col-sm-8">{{ item.adopt_name }}</dd>
+  {% endif %}
+
+  </dd>
+
+</dl>

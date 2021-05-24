@@ -1,0 +1,17 @@
+{% load humanize %}
+
+<ul class="pagination pagination-sm">
+    <li class="page-item">
+        <a class="btn btn-primary btn-sm mt-1 mr-1" href="#" aria-label="Previous">
+            <
+        </a>
+    </li>
+    <li>
+    <input type="number" id="page" name="page" style="width:70px; display: inline;" value="{{ page }}" class="form-control page"> de {{ total_pages|intcomma }}
+    </li>
+    <li class="page-item">
+        <a class="btn btn-primary btn-sm mt-1 ml-1" href="#" aria-label="Next">
+            >
+        </a>
+    </li>
+</ul>
