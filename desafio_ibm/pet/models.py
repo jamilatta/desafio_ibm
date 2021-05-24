@@ -39,12 +39,29 @@ class CommonControlField(models.Model):
         abstract = True
 
 
+class PetCategory(models.Model):
+    """
+    Essa classe representa um categorias de pets.
+
+    Exemplo: Gato, Cachorro...
+    """
+
+    name = models.CharField("Categoria", blank=True, max_length=255)
+
+    class Meta:
+        verbose_name = "Categoria de Pet"
+        verbose_name_plural = "Categorias de Pets"
+
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
+
 class Pet(CommonControlField):
     """
     Essa classe representa um pet.
-
-    Campos:
-        Nome do Cidade
     """
 
     name = models.CharField("Nome", blank=True, max_length=255)
@@ -54,6 +71,14 @@ class Pet(CommonControlField):
 
     city = models.ForeignKey(
         City, on_delete=models.SET_NULL, verbose_name="Cidade", null=True, blank=True
+    )
+
+    category = models.ForeignKey(
+        PetCategory,
+        on_delete=models.SET_NULL,
+        verbose_name="Categoria de Pet",
+        null=True,
+        blank=True,
     )
 
     class Meta:

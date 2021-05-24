@@ -10,28 +10,87 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('users', '0006_auto_20210523_1516'),
+        ("users", "0006_auto_20210523_1516"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Pet',
+            name="Pet",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(auto_now_add=True, verbose_name='Data de criação')),
-                ('updated', models.DateTimeField(auto_now=True, verbose_name='Data da última atualização')),
-                ('name', models.CharField(blank=True, max_length=255, verbose_name='Nome')),
-                ('race', models.CharField(blank=True, max_length=255, verbose_name='Raça')),
-                ('age', models.CharField(blank=True, max_length=255, verbose_name='Idade')),
-                ('weight', models.CharField(blank=True, max_length=255, verbose_name='Peso')),
-                ('city', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='users.city', verbose_name='Cidade')),
-                ('creator', models.ForeignKey(editable=False, on_delete=django.db.models.deletion.CASCADE, related_name='pet_creator', to=settings.AUTH_USER_MODEL, verbose_name='Criador')),
-                ('updated_by', models.ForeignKey(blank=True, editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='pet_last_mod_user', to=settings.AUTH_USER_MODEL, verbose_name='Modificador')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Data de criação"
+                    ),
+                ),
+                (
+                    "updated",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="Data da última atualização"
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(blank=True, max_length=255, verbose_name="Nome"),
+                ),
+                (
+                    "race",
+                    models.CharField(blank=True, max_length=255, verbose_name="Raça"),
+                ),
+                (
+                    "age",
+                    models.CharField(blank=True, max_length=255, verbose_name="Idade"),
+                ),
+                (
+                    "weight",
+                    models.CharField(blank=True, max_length=255, verbose_name="Peso"),
+                ),
+                (
+                    "city",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="users.city",
+                        verbose_name="Cidade",
+                    ),
+                ),
+                (
+                    "creator",
+                    models.ForeignKey(
+                        editable=False,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="pet_creator",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Criador",
+                    ),
+                ),
+                (
+                    "updated_by",
+                    models.ForeignKey(
+                        blank=True,
+                        editable=False,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="pet_last_mod_user",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Modificador",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Pet',
-                'verbose_name_plural': 'Pet',
+                "verbose_name": "Pet",
+                "verbose_name_plural": "Pet",
             },
         ),
     ]

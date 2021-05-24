@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2>
+                    Lista<span class="fw-300"><i> de Pets</i></span>
+                </h2>
+                <div class="panel-toolbar"></div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <div id="dt-basic-example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row mb-3">
+                            <div class="col-sm-12 col-md-6 d-flex align-items-center justify-content-start">
+                                <div id="dt-basic-example_filter" class="dataTables_filter"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline" role="grid" aria-describedby="dt-basic-example_info" style="width: 1209px;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th tabindex="1" aria-controls="dt-basic-example" rowspan="1" colspan="1">Nome</th>
+                                            <th tabindex="1" aria-controls="dt-basic-example" rowspan="1" colspan="1">Raça</th>
+                                            <th tabindex="1" aria-controls="dt-basic-example" rowspan="1" colspan="1">Idade</th>
+                                            <th tabindex="1" aria-controls="dt-basic-example" rowspan="1" colspan="1">Peso</th>
+                                            <th tabindex="1" aria-controls="dt-basic-example" rowspan="1" colspan="1">Categoria</th>
+                                            <th tabindex="1" aria-controls="dt-basic-example" rowspan="1" colspan="1">Cidade</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for pet in object_list %}
+                                            <tr role="row">
+                                                <td>
+                                                  {{ pet.name|default:"" }}
+                                                </td>
+                                                <td>
+                                                  {{ pet.race|default:"" }}
+                                                </td>
+                                                <td>
+                                                  {{ pet.age|default:"" }}
+                                                </td>
+                                                <td>
+                                                  {{ pet.weight|default:"" }}
+                                                </td>
+                                                <td>
+                                                  {{ pet.category|default:"" }}
+                                                </td>
+                                                <td>
+                                                  {{ pet.city|default:"" }}
+                                                </td>
+                                                <td>
+                                                    <a  href="{% url 'pet:pet_update' pet.id %}" class="btn btn-primary btn-sm">atualizar</a>
+                                                    <a  href="{% url 'pet:pet_delete' pet.id %}" class="btn btn-danger btn-sm">deletar</a>
+                                                </td>
+                                            </tr>
+                                            {% empty %}
+                                            <td colspan="7">
+                                                Nenhum pet encontrado.
+                                            </td>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- datatable end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
