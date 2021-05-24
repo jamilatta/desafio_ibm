@@ -124,6 +124,31 @@ To run the aplication with docker
 
     docker-compose -f local.yml up -d
 
+Access the container to populate the cities and states:
+
+
+.. code-block:: bash
+
+    docker exec -ti django bash
+
+Add the following enviroments variables in the container:
+
+.. code-block:: bash
+
+    export CELERY_BROKER_URL="${REDIS_URL}"
+
+    base_postgres_image_default_user='postgres'
+    export POSTGRES_USER="${base_postgres_image_default_user}"
+
+    export DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}"
+
+Run:
+
+.. code-block:: bash
+
+    python manage.py runscript set_cities
+    python manage.py runscript set_states
+
 
 Access with browser:
 
