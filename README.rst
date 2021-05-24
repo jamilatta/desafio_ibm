@@ -77,17 +77,42 @@ With MailHog running, to view messages that are sent by your application, open y
 .. _mailhog: https://github.com/mailhog/MailHog
 
 
-To access the e-mail during development tests 
-  
+To access the e-mail during development tests
+
 http://localhost:8025 (mailhog)
 
-Deployment
-----------
+Components and technologies:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following details how to deploy this application.
+ * Módulo ``django.contrib.auth``
+ * Módulo ``django.utils.translation``
+ * Módulo ``django.contrib.auth.models.AbstractUser``
+ * Templatetags
+ * Generic views
+ * Jquery
+ * chzn-chosen select
+ * Bootstrap
+ * Docker
+ * Docker-compose
+ * Nginx
+ * Celery
+ * Postgres
+ * I18N (Django)
+ * Enviroment Variables
+ * Markdown
+ * Pip
+ * gunicorn
+ * CSS
+ * Javascript
+ * PGBouncer
+ * Adminer (dev)
+ * Mailhog
+ * Redis
+ * Docs
+ * Code Style Black.
 
 Docker
-^^^^^^
+^^^^^^^^
 
 To build the appplication:
 
@@ -102,7 +127,7 @@ To run the aplication with docker
     docker-compose -f local.yml up -d
 
 
-Access with browser: 
+Access with browser:
 
 http://localhost:8000
 
